@@ -1,11 +1,13 @@
 var bucketList = []
 var countries;
-// var express = require('express');
-// var countryRouter = express.Router();
-// var CountryQuery = require('../db/countryQuery')
-// var countryQuery = new CountryQuery();
+
 
 var app = function(){
+  
+  var center = {lat: 55.953, lng: -3.2}
+  var containerDiv = document.querySelector("#main-map");
+  var mainMap = new MapWrapper(containerDiv, center, 5);
+
   var url = 'https://restcountries.eu//rest/v2';
   var button = document.querySelector('button')
   
@@ -19,8 +21,11 @@ var app = function(){
     console.log(bucketList)
 
     makePostRequest("http://localhost:3000/countries", function(){
-      console.log(' frontend: post request attempted')
     }, jsonString);
+  
+  console.log(country.name);
+  mainMap.addMarker({lat: country.latlng[0], lng: country.latlng[1]});
+  mainMap.center({lat: country.latlng[0], lng: country.latlng[1]})
   }
 }
 
@@ -44,7 +49,7 @@ var requestComplete = function(){
   if(this.status != 200) return;
   var jsonString = this.responseText;
   countries = JSON.parse(jsonString);
-  console.log(countries)  
+  
 }
 
 
