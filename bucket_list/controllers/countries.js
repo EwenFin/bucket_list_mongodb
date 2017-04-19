@@ -9,7 +9,6 @@ countryRouter.post('/', function(req, res){
   console.log(newCountry)
   
 
-
   countryQuery.add(newCountry, function(results){
     res.json(results)
     console.log(results)

@@ -11,10 +11,6 @@ app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/index.html'));
 })
 
-// app.post('/', function(req, res){
-//   // console.log("backend: did this post something?")
-//   })
-
 app.use(express.static('public'));
 
 var server = app.listen(3000, function () {
