@@ -1,4 +1,4 @@
-
+var bucketList = []
 
 var app = function(){
   var url = 'https://restcountries.eu//rest/v2';
@@ -23,7 +23,14 @@ var requestComplete = function(){
   var jsonString = this.responseText;
   var countries = JSON.parse(jsonString);
   console.log(countries)
-  
+  // random number to get 
+  bucketList.push(countries[Math.floor(Math.random() * 250) + 1])
+  bucketList.push(countries[Math.floor(Math.random() * 250) + 1])
+  bucketList.push(countries[Math.floor(Math.random() * 250) + 1])
+  bucketList.push(countries[Math.floor(Math.random() * 250) + 1])
+  bucketList.push(countries[Math.floor(Math.random() * 250) + 1])
+  console.log(bucketList);
 }
+
 
 window.onload = app;
